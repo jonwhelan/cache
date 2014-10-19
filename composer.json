@@ -1,0 +1,19 @@
+{
+    "name": "whales/cache",
+    "require-dev": {
+        "phpunit/phpunit": "4.3.*"
+    },
+    "authors": [
+        {
+            "name": "Jon Whelan"
+        }
+    ],
+    "require": {
+
+    },
+    "autoload": {
+        "psr-4": {
+            "Whales\\Cache\\": "src"
+        }
+    }
+}
