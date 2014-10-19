@@ -2,6 +2,8 @@
 
 namespace Whales\Cache\StampedeProtection;
 
+use Whales\Cache\StampedeProtection\Locks\LockInterface;
+
 class MutexLockReleasingDecorator
 {
 	private $service;

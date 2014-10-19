@@ -1,6 +1,6 @@
 <?php
 
-use Whales\Cache\StampedeProtection\LockInterface;
+use Whales\Cache\StampedeProtection\Locks\LockInterface;
 
 class MutexLockReleasingDecoratorTest extends \PHPUnit_Framework_TestCase
 {

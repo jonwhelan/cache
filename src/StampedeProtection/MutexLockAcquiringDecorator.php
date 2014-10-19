@@ -3,6 +3,7 @@
 namespace Whales\Cache\StampedeProtection;
 
 use Whales\Cache\Maps\CacheMapInterface;
+use Whales\Cache\StampedeProtection\Locks\LockInterface;
 
 class MutexLockAcquiringDecorator
 {

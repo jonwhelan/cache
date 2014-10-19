@@ -1,6 +1,6 @@
 <?php
 
-namespace Whales\Cache\StampedeProtection;
+namespace Whales\Cache\StampedeProtection\Locks;
 
 interface LockInterface
 {

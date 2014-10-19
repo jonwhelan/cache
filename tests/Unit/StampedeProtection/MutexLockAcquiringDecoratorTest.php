@@ -1,6 +1,6 @@
 <?php
 
-use Whales\Cache\StampedeProtection\LockInterface;
+use Whales\Cache\StampedeProtection\Locks\LockInterface;
 use Whales\Cache\Maps\ArrayCacheMap;
 
 class MutexLockAcquiringDecoratorTest extends \PHPUnit_Framework_TestCase
