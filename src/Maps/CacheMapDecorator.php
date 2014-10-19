@@ -1,8 +1,6 @@
 <?php
 
-namespace Whales\Cache;
-
-use Whales\Cache\Maps\CacheMapInterface;
+namespace Whales\Cache\Maps;
 
 trait CacheMapDecorator
 {
