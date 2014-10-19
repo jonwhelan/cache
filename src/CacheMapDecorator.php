@@ -21,7 +21,7 @@ trait CacheMapDecorator
 		return $this->cache->find($key);
 	}
 
-	public function put($key, $item)
+	public function set($key, $item)
 	{
 		$this->cache->set($key, $item);
 	}
