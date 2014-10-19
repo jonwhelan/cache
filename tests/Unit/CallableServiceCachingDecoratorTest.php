@@ -1,9 +1,9 @@
 <?php
 
-use Whales\Cache\CachingDecorator;
+use Whales\Cache\CallableServiceCachingDecorator;
 use Whales\Cache\Maps\ArrayCacheMap;
 
-class CachingDecoratorTest extends \PHPUnit_Framework_TestCase
+class CallableServiceCachingDecoratorTest extends \PHPUnit_Framework_TestCase
 {
 	private $sut;
 	private $cacheMap;
@@ -11,7 +11,7 @@ class CachingDecoratorTest extends \PHPUnit_Framework_TestCase
 	protected function setUp()
 	{
 		$this->cacheMap = new ArrayCacheMap;
-		$this->sut = new CachingDecorator(
+		$this->sut = new CallableServiceCachingDecorator(
 			function ($key) { return 'serviceData'; },
 			$this->cacheMap
 		);

@@ -4,7 +4,7 @@ namespace Whales\Cache;
 
 use Whales\Cache\Maps\CacheMapInterface;
 
-class CachingDecorator
+class CallableServiceCachingDecorator
 {
 	private $service;
 	private $cacheMap;
