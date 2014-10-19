@@ -2,7 +2,6 @@
 
 namespace Whales\Cache\Maps;
 
-use Whales\Cache\CacheMapDecorator;
 use Whales\Cache\Maps\Support\MapGet;
 
 class AggregateCacheMap implements CacheMapInterface
