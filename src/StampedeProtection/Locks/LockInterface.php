@@ -13,4 +13,9 @@ interface LockInterface
 	 * @return void
 	 */
 	public function release();
+
+	/**
+	 * @return bool
+	 */
+	public function isAvailable();
 }

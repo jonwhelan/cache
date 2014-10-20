@@ -8,14 +8,19 @@ class InMemoryLock implements LockInterface
 
 	public function acquire()
 	{
-		if (!$this->isLocked) {
-			$this->isLocked = true;
+		if ($this->isLocked) {
+			return false;
 		}
-		return $this->isLocked;
+		return $this->isLocked = true;
 	}
 
 	public function release()
 	{
 		$this->isLocked = false;
+	}
+
+	public function isAvailable()
+	{
+		return !$this->isLocked;
 	}
 }
