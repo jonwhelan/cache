@@ -7,35 +7,35 @@ trait CacheMapDecorator
 	/**
 	 * @var CacheMapInterface
 	 */
-	private $cache;
+	private $cacheMap;
 
 	public function get($key)
 	{
-		return $this->cache->get($key);
+		return $this->cacheMap->get($key);
 	}
 
 	public function find($key)
 	{
-		return $this->cache->find($key);
+		return $this->cacheMap->find($key);
 	}
 
 	public function set($key, $item)
 	{
-		$this->cache->set($key, $item);
+		$this->cacheMap->set($key, $item);
 	}
 
 	public function contains($key)
 	{
-		return $this->cache->contains($key);
+		return $this->cacheMap->contains($key);
 	}
 
 	public function clear()
 	{
-		$this->cache->clear();
+		$this->cacheMap->clear();
 	}
 
 	public function remove($key)
 	{
-		$this->cache->remove($key);
+		$this->cacheMap->remove($key);
 	}
 }
