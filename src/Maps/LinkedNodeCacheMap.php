@@ -16,47 +16,41 @@ class LinkedNodeCacheMap implements CacheMapInterface
 	{
 		$this->first = $first;
 		$this->next = $next;
-		$this->cacheMaps = array_filter([
+		$this->cacheMaps = new AggregateCacheMap(array_filter([
 			$this->first,
 			$this->next,
-		]);
+		]));
 	}
 
 	public function find($key)
 	{
-		foreach ($this->cacheMaps as $cacheMap) {
-			$iterator = $cacheMap->find($key);
-			if ($iterator->valid()) return $iterator;
+
+		$iterator = $this->first->find($key);
+		if ($iterator->valid()) {
+			return $iterator;
 		}
-		return new \EmptyIterator;
+		return (!is_null($this->next) && ($iterator = $this->next->find($key)) && $iterator->valid())
+			? $iterator
+			: new \EmptyIterator;
 	}
 
 	public function set($key, $value)
 	{
-		foreach ($this->cacheMaps as $cacheMap) {
-			$cacheMap->set($key, $value);
-		}
+		$this->cacheMaps->set($key, $value);
 	}
 
 	public function contains($key)
 	{
-		foreach ($this->cacheMaps as $cacheMap) {
-			if ($cacheMap->contains($key)) return true;
-		}
-		return false;
+		return $this->cacheMaps->contains($key);
 	}
 
 	public function clear()
 	{
-		foreach ($this->cacheMaps as $cacheMap) {
-			$cacheMap->clear();
-		}
+		$this->cacheMaps->clear();
 	}
 
 	public function remove($key)
 	{
-		foreach ($this->cacheMaps as $cacheMap) {
-			$cacheMap->remove($key);
-		}
+		$this->cacheMaps->remove($key);
 	}
 }
