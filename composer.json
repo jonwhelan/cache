@@ -1,5 +1,7 @@
 {
     "name": "whales/cache",
+    "description": "Caching library",
+    "keywords": ["cache", "caching"],
     "require-dev": {
         "phpunit/phpunit": "4.3.*"
     },
