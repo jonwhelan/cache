@@ -2,6 +2,7 @@
 
 use Whales\Cache\CallableServiceCachingDecorator;
 use Whales\Cache\Maps\ArrayCacheMap;
+use Whales\Cache\Maps\KeyStrategyCacheMap;
 
 class CallableServiceCachingDecoratorTest extends \PHPUnit_Framework_TestCase
 {
@@ -10,7 +11,7 @@ class CallableServiceCachingDecoratorTest extends \PHPUnit_Framework_TestCase
 
 	protected function setUp()
 	{
-		$this->cacheMap = new ArrayCacheMap;
+		$this->cacheMap = new KeyStrategyCacheMap(new ArrayCacheMap, 'serialize');
 		$this->sut = new CallableServiceCachingDecorator(
 			function ($key) { return 'serviceData'; },
 			$this->cacheMap
@@ -19,7 +20,7 @@ class CallableServiceCachingDecoratorTest extends \PHPUnit_Framework_TestCase
 
 	public function testReturnsDataStoredInCacheIfHit()
 	{
-		$this->cacheMap->set('key', 'test');
+		$this->cacheMap->set(['key'], 'test');
 		$this->assertEquals('test', call_user_func($this->sut, 'key'));
 	}
 
@@ -32,6 +33,6 @@ class CallableServiceCachingDecoratorTest extends \PHPUnit_Framework_TestCase
 	public function testAddsServiceDataToCacheAfterMiss()
 	{
 		call_user_func($this->sut, 'key');
-		$this->assertEquals('serviceData', $this->cacheMap->get('key'));
+		$this->assertEquals('serviceData', $this->cacheMap->get(['key']));
 	}
 }

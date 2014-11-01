@@ -2,17 +2,16 @@
 
 namespace Whales\Cache\Maps;
 
+use Whales\Cache\Maps\Support\MapGet;
+
 trait CacheMapDecorator
 {
+	use MapGet;
+
 	/**
 	 * @var CacheMapInterface
 	 */
 	private $cacheMap;
-
-	public function get($key)
-	{
-		return $this->cacheMap->get($key);
-	}
 
 	public function find($key)
 	{

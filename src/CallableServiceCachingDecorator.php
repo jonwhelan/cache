@@ -15,15 +15,16 @@ class CallableServiceCachingDecorator
 		$this->cacheMap = $cacheMap;
 	}
 
-	public function __invoke($key)
+	public function __invoke($variadic)
 	{
-		$iterator = $this->cacheMap->find($key);
+		$args = func_get_args();
+		$iterator = $this->cacheMap->find($args);
 		if ($iterator->valid()) {
 			return $iterator->current();
 		}
 
-		$value = call_user_func($this->service, $key);
-		$this->cacheMap->set($key, $value);
+		$value = call_user_func_array($this->service, $args);
+		$this->cacheMap->set($args, $value);
 		return $value;
 	}
 }
